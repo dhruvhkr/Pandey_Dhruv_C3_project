@@ -63,5 +63,14 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
     }
+
+    @Test
+    public void verify_total_order_price_made_by_the_user() {
+        restaurant = new Restaurant("Taj","Delhi",LocalTime.parse( "00:00:00"  ),LocalTime.parse( "23:59:59"  ));
+        restaurant.addToMenu("Pasta",30);
+        restaurant.addToMenu("Pizza",300);
+
+        assertEquals(330,restaurant.totalOrderValue());
+    }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
